@@ -1,0 +1,30 @@
+<%- include('./templates/header.ejs') %>
+
+
+<form action="/admin/create-article" method="POST" enctype="multipart/form-data">
+
+    <input id="titulo" name="titulo" type="text" placeholder="Título del artículo">
+
+    <input id="extract" name="extract" type="text" placeholder="Extracto del artículo">
+
+    <textarea id="body" name="body" cols="40" rows="20" placeholder="Cuerpo ddel artículo"></textarea>
+
+    <input type="submit" value="Guardar entrada">
+
+</form>
+
+<% if (typeof errors !== 'undefined') { %>
+
+    <% errors.forEach(element=> {
+
+        if (!element.msg.includes("Invalid value")) { %>
+
+        <p>
+            <%= element.msg %>
+        </p>
+
+        <% } }) %>
+
+            <% } %>
+
+<%- include('./templates/footer.ejs') %>
