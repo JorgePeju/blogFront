@@ -1,8 +1,10 @@
 <%- include('./templates/header.ejs') %>
 
+
+
+
 <main class="grid-container">
 
-    <div class="botones"><button><a href="/admin/create-form">Crear Artículo</a></button></div>
 
     <% if(article.length> 0) {%>
 
@@ -22,8 +24,7 @@
                         </p>
 
                     <div class="botones">
-                        <button><a href="/admin/edit-form/<%=element._id%>">Editar</a></button>
-                        <button><a href="/admin/remove-article/<%=element._id%>">Eliminar</a></button>
+                        <button><a href="/<%=element._id%>">Vista Detalle</a></button>
                     </div>
 
                 </div>
@@ -36,5 +37,4 @@
                         <% } %>
 
 </main>
-
 <%- include('./templates/footer.ejs') %>

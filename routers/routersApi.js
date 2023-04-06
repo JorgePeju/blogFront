@@ -11,12 +11,9 @@ router.get('/create-form', formCreateArticle);
 
 router.post('/edit-article/:id', editArticle);
 
-router.get('/edit-form', formEditArticle);
+router.get('/edit-form/:id', formEditArticle);
 
 router.get('/remove-article/:id', deleteArticle);
-
-
-
 
 
 

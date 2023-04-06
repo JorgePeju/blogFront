@@ -1,30 +1,33 @@
 <%- include('./templates/header.ejs') %>
 
+    <section class="create-form">
 
-<form action="/admin/create-article" method="POST" enctype="multipart/form-data">
+       <form action="/admin/create-article" method="POST">
 
-    <input id="titulo" name="titulo" type="text" placeholder="Título del artículo">
+         <input id="titulo" name="titulo" type="text" placeholder="Título del artículo">
 
-    <input id="extract" name="extract" type="text" placeholder="Extracto del artículo">
+         <input id="extracto" name="extracto" type="text" placeholder="Extracto del artículo">
 
-    <textarea id="body" name="body" cols="40" rows="20" placeholder="Cuerpo ddel artículo"></textarea>
+         <textarea id="cuerpo" name="cuerpo" cols="40" rows="20" placeholder="Cuerpo del artículo"></textarea>
 
-    <input type="submit" value="Guardar entrada">
+         <input type="submit" value="Guardar aritíclo">
 
-</form>
+      </form>
 
-<% if (typeof errors !== 'undefined') { %>
+    </section>
+    
+    <% if (typeof errors !=='undefined' ) { %>
 
-    <% errors.forEach(element=> {
+        <% errors.forEach(element=> {
 
-        if (!element.msg.includes("Invalid value")) { %>
+            if (!element.msg.includes("Invalid value")) { %>
 
-        <p>
-            <%= element.msg %>
-        </p>
+            <p>
+                <%= element.msg %>
+            </p>
 
-        <% } }) %>
+            <% } }) %>
 
-            <% } %>
+                <% } %>
 
 <%- include('./templates/footer.ejs') %>

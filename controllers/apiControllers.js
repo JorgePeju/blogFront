@@ -1,15 +1,14 @@
 const {consultation} = require('../helpers/fetch')
 
 const getArticles = async (req, res) => {
-
-    const url = ``;
-
+    
     try {
 
+        const url = `${process.env.URL_BASE}`; 
         const respuesta = await consultation(url);
-        
-        res.render('../views/admin/dashboard-admin.ejs', {
-        respuesta
+   
+        res.render('../views/admin/adminView.ejs', {
+          article: respuesta.data
         });
         
     } catch (error) {
@@ -24,7 +23,6 @@ const formCreateArticle = async (req, res) => {
 
     res.render('../views/admin/adminCreate.ejs');
 
-
 };
 
 const createArticle = async (req, res) => {
@@ -33,12 +31,12 @@ const createArticle = async (req, res) => {
 
         if (!res.errors) {
 
-            const url = ``;
+            const url = `${process.env.URL_BASE}`;
             const method = 'POST';
             const body = req.body;
 
             await consultation(url, method, body)
-            return res.redirect('/admin/articles');
+            return res.redirect('/admin/');
 
         } else {
 
@@ -59,17 +57,17 @@ const createArticle = async (req, res) => {
 
 const formEditArticle  = async (req, res) => {
 
-    const url = ``;
+    const id = req.params.id
+    const url = `${process.env.URL_BASE}${id}`;
 
     const respuesta = await consultation(url)
 
     res.render('../views/admin/adminEdit.ejs', {
-        respuesta
+        article: respuesta.data
     });
   
         
 };
-
 
 const editArticle = async (req, res) => {
 
@@ -77,18 +75,20 @@ const editArticle = async (req, res) => {
 
         if (!res.errors) {
 
-            const url = ``; //* METER ID
+            const id = req.params.id
+            const url = `${process.env.URL_BASE}${id}`;
             const method = 'PUT';
             const body = req.body;
 
             await consultation(url, method, body)
-            return res.redirect('/admin/articles');
+            return res.redirect('/admin/');
 
         } else {
 
             await consultation(url, method, body)
             const errors = res.errors;
             res.render('../views/admin/adminEdit.ejs', { article, errors });
+            
         }
 
     } catch (error) {
@@ -106,11 +106,12 @@ const deleteArticle = async (req, res) => {
 
     try {
 
-        const url = ``; //* METER ID
+        const id = req.params.id
+        const url = `${process.env.URL_BASE}${id}`;
         const method = 'DELETE';
 
         await consultation(url, method); //* Crear constante previamente??
-        res.redirect('/dashboard-admin')
+        res.redirect('/admin/')
        
     } catch (error) {
         

@@ -7,7 +7,7 @@ require('dotenv').config();
 
 const app = express();
 
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3000;
 
 app.use(cors());
 
@@ -30,12 +30,12 @@ app.use('/', require('./routers/routersFront'));
 app.use('/admin', require('./routers/routersApi'));
 
 //* En caso de error, mandar a la página 404 (Frontend y backend, hay que configurarlo)
-app.use((req, res, next) => {
-    res.status(404).render("404", {
-        titulo: 'error 404',
-        parrafo: `Page not found`
-    })
-});
+// app.use((req, res, next) => {
+//     res.status(404).render("404", {
+//         titulo: 'error 404',
+//         parrafo: `Page not found`
+//     })
+// });
 
 //* Listener
 app.listen(port, () => {
