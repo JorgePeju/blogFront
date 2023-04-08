@@ -4,7 +4,7 @@ const getArticles = async (req, res) => {
     
     try {
 
-        const url = `${process.env.URL_BASE}`; 
+        const url = `${process.env.URL_BASE}?limit=10`; 
         const respuesta = await consultation(url);
    
         res.render('../views/admin/adminView.ejs', {

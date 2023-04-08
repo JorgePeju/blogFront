@@ -5,11 +5,12 @@ const getAllArticles = async (req, res) => {
 
     try {
 
-        const url = `${process.env.URL_BASE}`; 
+        const url = `${process.env.URL_BASE}?page=${req.query.page}`; 
         const respuesta = await consultation(url);
-   
+       
         res.render('../views/userView.ejs', {
-          article: respuesta.data
+          article: respuesta.data,
+          
         });
         
     } catch (error) {

@@ -5,7 +5,7 @@ const {getAllArticles, getOneArticle, }=require('../controllers/frontControllers
 
 router.get('/', getAllArticles );
 
-router.get('/:id', getOneArticle );
+router.get('/detail-view/:id', getOneArticle );
 
 
 router.get('/search',  );

@@ -1,8 +1,15 @@
 <%- include('./templates/header.ejs') %>
 
+<form id="searchForm" action="/search" method="POST" >
+
+    <label class="whiteLetters"  for="search">Search</label> 
+
+     <input id="searchInput" name="search" type="search" pattern=".*\S.*" required>
+     <span class="caret"></span>
+
+ </form>
+
 <main class="grid-container">
-
-
 
  <div class="card">
 
@@ -17,6 +24,10 @@
          <p class="cuerpo">
              <%= article.cuerpo %>
          </p>
+
+         <div class="botones">
+            <button><a href="/">Volver</a></button>
+         </div>   
 
  </div>
         
