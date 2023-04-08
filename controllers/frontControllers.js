@@ -5,7 +5,8 @@ const getAllArticles = async (req, res) => {
 
     try {
 
-        const url = `${process.env.URL_BASE}?page=${req.query.page}`; 
+        const page = parseInt(req.query.page);
+        const url = `${process.env.URL_BASE}?page=${page > 0 ? page : 1}`; 
         const respuesta = await consultation(url);
        
         res.render('../views/userView.ejs', {
@@ -23,6 +24,7 @@ const getAllArticles = async (req, res) => {
     };
 
 };
+
 
 const getOneArticle = async (req, res) => {
 
