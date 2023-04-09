@@ -1,38 +1,42 @@
 <%- include('./templates/header.ejs') %>
 <%- include('./templates/nav.ejs') %>
 
-    <section class="create-form">
+        <section class="create-form">
 
-        <form action="/admin/create-article" method="POST" enctype="multipart/form-data" >
+            <form action="/admin/create-article" method="POST" enctype="multipart/form-data">
 
-         <input id="titulo" name="titulo" type="text" placeholder="Título del artículo">
+                <label class="buscar">Título:</label>
+                <input id="titulo" name="titulo" type="text" placeholder="Título del artículo">
 
-         <input id="extracto" name="extracto" type="text" placeholder="Extracto del artículo">
+                <label class="buscar">Extracto del artículo:</label>
+                <input id="extracto" name="extracto" type="text" placeholder="Extracto del artículo">
 
-         <textarea id="cuerpo" name="cuerpo" cols="40" rows="20" placeholder="Cuerpo del artículo"></textarea>
+                <label class="buscar">Escriba su artículo</label>
+                <textarea id="cuerpo" name="cuerpo" cols="40" rows="20" placeholder="Cuerpo del artículo"></textarea>
 
-         <input id="foto" name="foto" type="file">
+                <label class="buscar">Añada la foto de su artículo</label>
+                <input id="foto" name="foto" type="file" class="">
 
-         <input id="imagen" name="imagen" type="hidden" value="">
+                <input id="imagen" name="imagen" type="hidden" value="">
 
-         <input type="submit" value="Crear aritíclo">
+                <input type="submit" value="Crear aritículo">
 
-      </form>
+            </form>
 
-    </section>
-    
-    <% if (typeof errors !=='undefined' ) { %>
+        </section>
 
-        <% errors.forEach(element=> {
+        <% if (typeof errors !=='undefined' ) { %>
 
-            if (!element.msg.includes("Invalid value")) { %>
+            <% errors.forEach(element=> {
 
-            <p>
-                <%= element.msg %>
-            </p>
+                if (!element.msg.includes("Invalid value")) { %>
 
-            <% } }) %>
+                <p>
+                    <%= element.msg %>
+                </p>
 
-                <% } %>
+                <% } }) %>
+
+                    <% } %>
 
 <%- include('./templates/footer.ejs') %>

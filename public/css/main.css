@@ -80,9 +80,14 @@
     text-align: center;
 }
 
+.fecha {
+    font-size: 1.5rem;
+    margin: 10px 800px 10px 0; 
+}
+
 .titulo {
     font-size: 1.5rem;
-    margin: 0;
+    margin: 0 ;
 }
 
 .extracto {
@@ -132,14 +137,17 @@
     color: #fff;
 }
 
+.create-form {
+    margin-top: 20px;
+}
+
 .create-form input[type="file"] {
     margin-left: 10%;
 }
 
 .create-form input[type="text"],
 
-.create-form textarea,
-.poster {
+.create-form textarea {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 13px;
     color: grey;
@@ -181,6 +189,7 @@
     position: relative;
     width: 100%;
     max-width: 17em;
+    margin-top: 20px;
 }
 
 #searchInput {

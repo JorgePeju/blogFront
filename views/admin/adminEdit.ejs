@@ -1,38 +1,44 @@
 <%- include('./templates/header.ejs') %>
 <%- include('./templates/nav.ejs') %>
 
- <section class="create-form">
-    
-        <form action="/admin/edit-article/<%=article._id%>" method="POST" enctype="multipart/form-data">
+        <section class="create-form">
 
-            <input id="titulo" name="titulo" type="text" placeholder="Título del artículo" value="<%=article.titulo%>">
+            <form action="/admin/edit-article/<%=article._id%>" method="POST" enctype="multipart/form-data">
 
-            <input id="extracto" name="extracto" type="text" placeholder="Extracto del artículo" value="<%=article.extracto%>">
 
-            <textarea id="cuerpo" name="cuerpo" cols="40" rows="20" placeholder="Cuerpo del artículo"> <%=article.cuerpo%> </textarea>
 
-            <input id="foto" name="foto" type="file">
+                <label class="buscar">Título:</label>
+                <input id="titulo" name="titulo" type="text" placeholder="Título del artículo" value="<%=article.titulo%>">
 
-            <input id="imagen" name="imagen" type="hidden" value="<%= article.imagen %>">
+                <label class="buscar">Extracto del artículo:</label>
+                <input id="extracto" name="extracto" type="text" placeholder="Extracto del artículo" value="<%=article.extracto%>">
 
-            <input type="submit" value="Editar artículo">
+                <label class="buscar">Escriba su artículo</label>
+                <textarea id="cuerpo" name="cuerpo" cols="40" rows="20" placeholder="Cuerpo del artículo"> <%=article.cuerpo%></textarea>
 
-        </form>
+                <label class="buscar">Añada la foto de su artículo</label>
+                <input id="foto" name="foto" type="file">
 
- </section>
+                <input id="imagen" name="imagen" type="hidden" value="<%=article.imagen%>">
 
-    <% if (typeof errors !=='undefined' ) { %>
+                <input type="submit" value="Editar artículo">
 
-        <% errors.forEach(element=> {
+            </form>
 
-            if (!element.msg.includes("Invalid value")) { %>
+        </section>
 
-            <p>
-                <%= element.msg %>
-            </p>
+        <% if (typeof errors !=='undefined' ) { %>
 
-            <% } }) %>
+            <% errors.forEach(element=> {
 
-                <% } %>
+                if (!element.msg.includes("Invalid value")) { %>
 
+                <p>
+                    <%= element.msg %>
+                </p>
+
+                <% } }) %>
+
+                    <% }
+                    
 <%- include('./templates/footer.ejs') %>
