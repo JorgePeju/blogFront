@@ -49,21 +49,30 @@ const getOneArticle = async (req, res) => {
 };
 
 const searchArticles = async (req, res) => {
-
+    
     try {
 
-        const url = `${process.env.URL_BASE}`; 
-        const respuesta = await consultation(url);
-   
-        res.render('../views/userView.ejs', {
-          article: respuesta.data
-        });
+        const url = `${process.env.URL_BASE}/?search=${req.query.search}`;
+
+        if(req.query.search != ''){ 
+
+            const respuesta = await consultation(url);
+
+            res.render('../views/searchView.ejs', {
+                article: respuesta.data,
+            });
+
+        } else {
+
+            res.redirect('/');
+
+        };
         
     } catch (error) {
 
         return res.status(500).json({
             ok: false,
-            msg: "Error al acceder a los artículos",
+            msg: "Error al buscar los artículos",
         });
         
     };
@@ -73,6 +82,7 @@ const searchArticles = async (req, res) => {
 module.exports= {
 
     getAllArticles,
-    getOneArticle
+    getOneArticle,
+    searchArticles
     
 }

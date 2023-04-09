@@ -1,14 +1,13 @@
 <%- include('./templates/header.ejs') %>
 <%- include('./templates/nav.ejs') %>
 
-<form id="searchForm" action="/search" method="POST" >
+<form id="searchForm" action="/search" method="GET" >
 
-    <label class="whiteLetters"  for="search">Search</label> 
+    <label class="">Buscador</label> 
+    <input id="searchInput" name="search" type="search">
+    <button type="submit" class="">Buscar</button>
 
-     <input id="searchInput" name="search" type="search" pattern=".*\S.*" required>
-     <span class="caret"></span>
-
- </form>
+</form>
 
 <main class="grid-container">
 
