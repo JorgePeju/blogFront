@@ -100,6 +100,13 @@
     margin: 0;
 }
 
+.error {
+    font-size: 1.5rem;
+    margin: 10px ;
+    text-align: center;
+    color: red;
+}
+
 .paginacion {
     align-items: center;
     display: flex;

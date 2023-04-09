@@ -18,5 +18,25 @@
 
   </div>
 
+  <% if (typeof error !=='undefined' ) { %>
+
+    <p class="error">
+      <% if (error.code === 'auth/wrong-password') { %>
+
+        Contraseña incorrecta
+
+      <% } else if (error.code === 'auth/user-not-found') { %>
+
+        Usuario no encontrado
+
+      <% } else { %>
+
+        Algo salió mal
+
+      <% } %>
+    </p>
+  
+  <% } %>
+
 
 <%- include('./templates/footer.ejs') %>

@@ -20,27 +20,13 @@ const signIn = async (req, res) => {
 
         res.redirect('/admin')
 
+
     } catch (error) {
 
-        if (error.code === 'auth/wrong-password') {
+        res.render('../views/signInForm.ejs', {
+            error
+        });
 
-            res.render('../views/signInForm.ejs', {
-                error
-            });
-
-        } else if (error.code === 'auth/user-not-found') {
-
-            res.render('../views/signInForm.ejs', {
-                error
-            });
-
-        } else {
-
-            res.render('../views/signInForm.ejs', {
-                error
-            });
-
-        }
     }
 };
 
@@ -75,6 +61,7 @@ const signUp = async (req, res) => {
         res.redirect('/admin')
 
     } catch (error) {
+
         if (error.code === 'auth/email-already-in-use') {
 
             res.render('../views/admin/signUpForm.ejs', {
@@ -95,7 +82,7 @@ const signUp = async (req, res) => {
 
         } else if (error.code) {
 
-           res.render('../views/admin/signUpForm.ejs', {
+            res.render('../views/admin/signUpForm.ejs', {
                 error
             });
 

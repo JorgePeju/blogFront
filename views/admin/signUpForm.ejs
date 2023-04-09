@@ -17,5 +17,28 @@
 
   </div>
 
+  <% if (typeof error !=='undefined' ) { %>
+
+    <p class="error">
+      <% if (error.code === 'auth/email-already-in-use') { %>
+
+        Este correo ya ha sido registrado
+
+      <% } else if (error.code === 'auth/invalid-email') { %>
+
+        Introduzca un correo válido
+
+      <% } else if (error.code === 'auth/weak-password') { %>
+
+        Contraseña débil, debe tener al menos 6 caracteres
+
+      <% } else { %>
+
+        Algo salió mal
+
+      <% } %>
+    </p>
+  
+  <% } %>
 
   <%- include('./templates/footer.ejs') %>
