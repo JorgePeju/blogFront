@@ -94,10 +94,9 @@ const signIn = async (req, res) => {
     try {
 
         const userCredentials = await signInWithEmailAndPassword(authFb, email, password);
-        console.log(userCredentials)
-
+        
+        //* res.cookie()
         res.redirect('/admin')
-
 
     } catch (error) {
 
