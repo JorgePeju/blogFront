@@ -5,7 +5,6 @@
 }
 
 .header {
-
     color: #fff;
     padding: 20px;
     display: flex;
@@ -14,7 +13,6 @@
 }
 
 .navbar {
-   
     color: #fff;
     padding: 20px;
     display: flex;
@@ -54,18 +52,26 @@
 .user {
     background-color: #6941c0;
 }
+
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(1, 1fr);
+    justify-content: center;
     grid-gap: 20px;
 }
 
 .card {
     background-color: #fff;
+    align-items: center;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+
 
 .titulo {
     font-size: 1.5rem;
@@ -82,10 +88,19 @@
     margin: 0;
 }
 
+.paginacion {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5px;
+}
+
 .botones {
     display: flex;
     justify-content: space-between;
-    margin-top: 10px;
+    justify-content: center;
+    margin: 10px;
 }
 
 .botones button {
@@ -159,3 +174,34 @@
     width: 100%;
     max-width: 17em;
 }
+
+#searchInput {
+    border: none;
+    border-bottom: 2px solid #ddd;
+    padding: 10px;
+    font-size: 1.2rem;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#searchInput:focus {
+    outline: none;
+    border-color: #2b255a;
+}
+
+.buscar {
+    display: block;
+    text-align: center;
+    font-size: 1.2rem;
+    margin: 5px;
+  }
+
+
+/* Estilos para pantallas mayores a 768px */
+@media screen and (min-width: 768px) {}
+
+/* Estilos para pantallas mayores a 992px */
+@media screen and (min-width: 992px) {}
+
+/* Estilos para pantallas mayores a 1200px */
+@media screen and (min-width: 1200px) {}
