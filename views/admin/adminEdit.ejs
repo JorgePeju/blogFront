@@ -2,17 +2,21 @@
 <%- include('./templates/nav.ejs') %>
 
  <section class="create-form">
-        <form action="/admin/edit-article/<%=article._id%>" method="POST">
+    
+        <form action="/admin/edit-article/<%=article._id%>" method="POST" enctype="multipart/form-data">
 
             <input id="titulo" name="titulo" type="text" placeholder="Título del artículo" value="<%=article.titulo%>">
 
-            <input id="extracto" name="extracto" type="text" placeholder="Extracto del artículo"
-                value="<%=article.extracto%>">
+            <input id="extracto" name="extracto" type="text" placeholder="Extracto del artículo" value="<%=article.extracto%>">
 
-            <textarea id="cuerpo" name="cuerpo" cols="40" rows="20"
-                placeholder="Cuerpo del artículo"> <%=article.cuerpo%> </textarea>
+            <textarea id="cuerpo" name="cuerpo" cols="40" rows="20" placeholder="Cuerpo del artículo"> <%=article.cuerpo%> </textarea>
 
-            <input type="submit" value="Añadir artículo">
+            <input id="foto" name="foto" type="file">
+
+            <input id="imagen" name="imagen" type="hidden" value="<%= article.imagen %>">
+
+            <input type="submit" value="Editar artículo">
+
         </form>
 
  </section>

@@ -1,0 +1,28 @@
+<%- include('./templates/header.ejs') %>
+<%- include('./templates/nav.ejs') %>
+
+
+
+  <div class="buscar">
+    <h3>Login</h3>
+  </div>
+
+  <div>
+    <form id="searchForm" action="/signin" method="POST">
+
+      <label class="buscar">Email:</label>
+      <input type="text" name="email" id="searchInput" class="" placeholder="Email">
+
+      <label class="buscar">Password:</label>
+      <input type="password" name="password" id="searchInput" class="" placeholder="Password">
+
+      <div class="botones"><button type="submit" class="user">Enviar</button></div>
+    </form>
+
+
+  </div>
+
+
+
+
+<%- include('./templates/footer.ejs') %>

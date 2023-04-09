@@ -36,6 +36,7 @@ const createArticle = async (req, res) => {
 
         if (!res.errors) {
 
+            req.body.imagen = `http://localhost:3000/imagenes/${ req.file.filename }`
             const url = `${process.env.URL_BASE}`;
             const method = 'POST';
             const body = req.body;
@@ -77,6 +78,8 @@ const formEditArticle  = async (req, res) => {
 const editArticle = async (req, res) => {
 
     try {
+        
+        req.body.imagen = `http://localhost:3000/imagenes/${ req.file.filename }`
 
         if (!res.errors) {
 
@@ -86,7 +89,7 @@ const editArticle = async (req, res) => {
             const body = req.body;
 
             await consultation(url, method, body)
-            return res.redirect('/admin/');
+            return res.redirect('/admin');
 
         } else {
 
@@ -116,11 +119,14 @@ const deleteArticle = async (req, res) => {
         const method = 'DELETE';
 
         await consultation(url, method); //* Crear constante previamente??
-        res.redirect('/admin/')
+        res.redirect('/admin')
        
     } catch (error) {
         
-        console.log(error);
+        return res.status(500).json({
+            ok: false,
+            msg: "Error al borrar el artículo",
+        });
 
     };
 

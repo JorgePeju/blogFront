@@ -7,7 +7,6 @@ router.get('/', getAllArticles );
 
 router.get('/detail-view/:id', getOneArticle );
 
-
 router.get('/search', searchArticles);
 
 module.exports = router;

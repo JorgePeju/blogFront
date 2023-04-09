@@ -3,7 +3,7 @@
 
 <form id="searchForm" action="/search" method="GET" >
 
-    <label class="">Buscador</label> 
+    <label class="buscar">Buscador</label> 
     <input id="searchInput" name="search" type="search">
     <div class="botones"><button type="submit" class="user">Buscar</button></div>
 
@@ -16,6 +16,11 @@
         <% article.docs.forEach(element=> {%>
 
             <div class="card">
+
+                <div class="imagen">
+                    <img src="<%= element.imagen %>">
+                  </div>
+
                 <h2 class="titulo">
                     <%= element.titulo %>
                 </h2>
@@ -41,24 +46,36 @@
             <div class="paginacion">
 
                 <% if (article.hasPrevPage) { %>
-                    <div id="anterior" class="botones"><button class="user"><a href="?page=<%= article.prevPage %>">Anterior</a></button></div>
-                <% } %>
 
-                <% for (let i = 1; i <= article.totalPages; i++) { %>
-
-                    <% if (i === article.page) { %>
-                        <div id="pagina-totales" class="botones"><button class="user"><span><%= i %></span></button></div> 
-                    <% } else { %>
-                        <div id="pagina-totales" class="botones"><button class="user"><a href="?page=<%= i %>"><%= i %></a></button></div> 
-                    <% } %>
+                  <div id="anterior" class="botones"><button class="user"><a href="?page=<%= article.prevPage %>">Anterior</a></button></div>
 
                 <% } %>
+              
+                <% const minimoPagina = Math.min(article.totalPages, 3); %>
+                <% const paginaActual = Math.max(1, article.page - 1); %>
+                <% const maximoPagina = Math.min(paginaActual + minimoPagina - 1, article.totalPages); %>
 
+                <% for (let i = paginaActual; i <= maximoPagina; i++) { %>
+
+                  <% if (i === article.page) { %>
+
+                    <div id="pagina-totales" class="botones"><button class="user"><span><%= i %></span></button></div> 
+
+                  <% } else { %>
+
+                    <div id="pagina-totales" class="botones"><button class="user"><a href="?page=<%= i %>"><%= i %></a></button></div> 
+
+                  <% } %>
+
+                <% } %>
+              
                 <% if (article.hasNextPage) { %>
-                    <div id="siguiente" class="botones"><button class="user"><a href="?page=<%= article.nextPage %>">Siguiente</a></button></div>
-                <% } %>
 
-            </div>
+                  <div id="siguiente" class="botones"><button class="user"><a href="?page=<%= article.nextPage %>">Siguiente</a></button></div>
+
+                <% } %>
+                
+              </div>
 
         <% } %>
 

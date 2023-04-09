@@ -7,7 +7,12 @@
     
             <% article.docs.forEach(element=> {%>
     
-                <div class="card">
+                <div class="card"> 
+
+                    <div class="imagen">
+                      <img src="<%= element.imagen %>">
+                    </div>
+
                     <h2 class="titulo">
                         <%= element.titulo %>
                     </h2>
@@ -21,7 +26,11 @@
                     </p>
     
                     <div class="botones">
-                        <button class="admin"><a href="/detail-view/<%=element._id%>">Vista Detalle</a></button>
+
+                        <button class="admin"><a href="/admin/edit-form/<%=element._id%>">Editar</a></button>
+
+                        <button class="admin"><a href="/admin/remove-article/<%=element._id%>">Eliminar</a></button>
+
                     </div>
     
                 </div>
