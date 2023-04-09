@@ -29,9 +29,9 @@ app.use('/', require('./routers/routersFront'));
 
 app.use('/admin', require('./routers/routersApi'));
 
-app.use('/login', require('./routers/routersLogin'));
 
 //* En caso de error, mandar a la página 404 (Frontend y backend, hay que configurarlo)
+
 app.use((req, res, next) => {
     res.status(404).render("404", {
         titulo: 'error 404',

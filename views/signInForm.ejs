@@ -1,10 +1,9 @@
 <%- include('./templates/header.ejs') %>
 <%- include('./templates/nav.ejs') %>
 
-
   <div>
     
-    <form id="searchForm" action="/login/signin" method="POST">
+    <form id="searchForm" action="/signin" method="POST">
 
       <label class="buscar">Email:</label>
       <input type="text" name="email" id="searchInput" class="" placeholder="Email">
@@ -37,6 +36,5 @@
     </p>
   
   <% } %>
-
 
 <%- include('./templates/footer.ejs') %>
