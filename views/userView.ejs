@@ -1,4 +1,5 @@
 <%- include('./templates/header.ejs') %>
+<%- include('./templates/nav.ejs') %>
 
 <form id="searchForm" action="/search" method="POST" >
 
@@ -29,7 +30,7 @@
                 </p>
 
                 <div class="botones">
-                    <button><a href="/detail-view/<%=element._id%>">Vista Detalle</a></button>
+                    <button class="user"><a href="/detail-view/<%=element._id%>">Vista Detalle</a></button>
                 </div>
 
             </div>
@@ -41,21 +42,21 @@
             <div class="paginacion">
 
                 <% if (article.hasPrevPage) { %>
-                    <div id="anterior"><a href="?page=<%= article.prevPage %>">Anterior</a></div>
+                    <div id="anterior" class="botones"><button class="user"><a href="?page=<%= article.prevPage %>">Anterior</a></button></div>
                 <% } %>
 
                 <% for (let i = 1; i <= article.totalPages; i++) { %>
 
                     <% if (i === article.page) { %>
-                        <div id="pagina-totales"><span><%= i %></span></div> 
+                        <div id="pagina-totales" class="botones"><button class="user"><span><%= i %></span></button></div> 
                     <% } else { %>
-                        <div id="pagina-totales"><a href="?page=<%= i %>"><%= i %></a></div> 
+                        <div id="pagina-totales" class="botones"><button class="user"><a href="?page=<%= i %>"><%= i %></a></button></div> 
                     <% } %>
 
                 <% } %>
 
                 <% if (article.hasNextPage) { %>
-                    <div id="siguiente"><a href="?page=<%= article.nextPage %>">Siguiente</a></div>
+                    <div id="siguiente" class="botones"><button class="user"><a href="?page=<%= article.nextPage %>">Siguiente</a></button></div>
                 <% } %>
 
             </div>

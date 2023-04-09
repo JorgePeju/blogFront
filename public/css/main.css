@@ -4,6 +4,56 @@
     box-sizing: border-box;
 }
 
+.header {
+
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar {
+   
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+}
+
+.navbar li {
+    margin: 0 20px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.2rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.navbar.admin a:hover {
+    color: #2980b9;
+}
+
+.navbar.user a:hover {
+    color: #2b255a;
+}
+
+.admin {
+    background-color: #3498db;
+}
+
+.user {
+    background-color: #6941c0;
+}
 .grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -39,7 +89,6 @@
 }
 
 .botones button {
-    background-color: #3498db;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -47,8 +96,12 @@
     cursor: pointer;
 }
 
-.botones button:hover {
+.botones.admin button:hover {
     background-color: #2980b9;
+}
+
+.botones.user button:hover {
+    background-color: #2b255a;
 }
 
 .botones a {
@@ -97,12 +150,12 @@
     margin: 30px;
 }
 
-#searchForm{
-	margin: auto;
+#searchForm {
+    margin: auto;
 }
 
 #searchForm {
-	position: relative;
-	width: 100%;
-	max-width: 17em;
+    position: relative;
+    width: 100%;
+    max-width: 17em;
 }

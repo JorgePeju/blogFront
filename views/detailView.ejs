@@ -1,10 +1,12 @@
 <%- include('./templates/header.ejs') %>
+<%- include('./templates/nav.ejs') %>
 
 <form id="searchForm" action="/search" method="POST" >
 
-    <label class="whiteLetters"  for="search">Search</label> 
+    <label class=""  for="search">Search</label> 
 
-     <input id="searchInput" name="search" type="search" pattern=".*\S.*" required>
+     <input id="searchInput" name="search" type="search">
+
      <span class="caret"></span>
 
  </form>
@@ -23,17 +25,10 @@
 
          <p class="cuerpo">
              <%= article.cuerpo %>
-         </p>
-
-         <div class="botones">
-            <button><a href="/">Volver</a></button>
-         </div>   
+         </p> 
 
  </div>
         
-         
-
-         <p>No hay ningún artículo</p>
 </main>
 
 <%- include('./templates/footer.ejs') %>
