@@ -4,7 +4,9 @@ const getArticles = async (req, res) => {
     
     try {
 
-        const url = `${process.env.URL_BASE}?limit=10`; 
+        const page = parseInt(req.query.page);
+        const limit = 5;
+        const url = `${process.env.URL_BASE}?page=${page > 0 ? page : 1}&limit=${limit}`;
         const respuesta = await consultation(url);
    
         res.render('../views/admin/adminView.ejs', {
@@ -13,7 +15,10 @@ const getArticles = async (req, res) => {
         
     } catch (error) {
 
-        console.log(error);
+        return res.status(500).json({
+            ok: false,
+            msg: "Error obtener los artículos",
+        });
         
     };
 
