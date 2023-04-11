@@ -27,7 +27,14 @@ const signIn = async (req, res) => {
         const userCredentials = await signInWithEmailAndPassword(authFb, email, password);
        
         const token = userCredentials._tokenResponse.idToken
-        res.cookie("token", userCredentials._tokenResponse.idToken , { http: true, secure: true, sameSite: 'strict', expires: new Date('2023-12-20') })
+        res.cookie("token", userCredentials._tokenResponse.idToken, {
+
+            httpOnly: true,
+            secure: true,
+            sameSite: 'strict',
+            expires: new Date('2023-12-20'),
+
+          });
         
         console.log(token)
         res.redirect('/admin')
@@ -51,7 +58,7 @@ const logOut = async (req, res) => {
     try {
 
         await signOut(authFb)
-        console.log("signup out of ");
+        res.clearCookie("token")
         res.redirect('/')
 
     } catch (error) {

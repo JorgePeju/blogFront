@@ -1,28 +1,29 @@
-const jwt = require('jsonwebtoken');
+const { admin } = require('../helpers/firebase');
 
+const checkToken = async (req, res, next) => {
 
+    const idToken = req.cookies.token;
 
+    if (!idToken) {
 
+        return res.redirect("/");
 
-const verifyJWT = async (req, res, next) => {
+    }
 
-    const token = req.cookies.token;
-    console.log(token)
     try {
-        
-        const user = jwt.verify(token, process.env.JWT_SECRET_KEY);
 
-        req.user = user;
+        const decodedToken = await admin.auth().verifyIdToken(idToken);
+        req.user = decodedToken;
 
         next();
 
     } catch (error) {
-                
-        return res.clearCookie('token').redirect('/');
 
-    };
+        console.log(error);
 
+        res.redirect('/')
+
+    }
 };
 
-
-module.exports = {verifyJWT};
+module.exports = { checkToken };
