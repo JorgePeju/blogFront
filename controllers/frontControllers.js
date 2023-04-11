@@ -1,5 +1,3 @@
-const { signInWithEmailAndPassword } = require('firebase/auth');
-const { authFb } = require('../helpers/firebase')
 const { consultation } = require('../helpers/fetch')
 
 
@@ -81,38 +79,12 @@ const searchArticles = async (req, res) => {
 
 };
 
-const formSignIn = async (req, res) => {
 
-    res.render('../views/signInForm.ejs');
-
-};
-
-const signIn = async (req, res) => {
-
-    const { email, password } = req.body
-
-    try {
-
-        const userCredentials = await signInWithEmailAndPassword(authFb, email, password);
-        
-        //* res.cookie()
-        res.redirect('/admin')
-
-    } catch (error) {
-
-        res.render('../views/signInForm.ejs', {
-            error
-        });
-
-    }
-};
 
 module.exports= {
 
     getAllArticles,
     getOneArticle,
     searchArticles,
-    formSignIn,
-    signIn
     
 }

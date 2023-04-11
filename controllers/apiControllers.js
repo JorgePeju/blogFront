@@ -1,5 +1,4 @@
-const { createUserWithEmailAndPassword, signOut } = require('firebase/auth');
-const { authFb } = require('../helpers/firebase')
+
 const {consultation} = require('../helpers/fetch')
 
 const getArticles = async (req, res) => {
@@ -157,44 +156,7 @@ const deleteArticle = async (req, res) => {
 };
 
 
-const logOut = async (req, res) => {
 
-    try {
-
-        await signOut(authFb)
-        console.log("signup out of ");
-        res.redirect('/')
-
-    } catch (error) {
-
-        console.log(error)
-    }
-};
-
-const formSignUp = async (req, res) => {
-
-    res.render('../views/admin/signUpForm.ejs');
-
-};
-
-const signUp = async (req, res) => {
-
-    const { email, password } = req.body
-
-    try {
-
-        const userCredential = await createUserWithEmailAndPassword(authFb, email, password)
-
-        res.redirect('/admin')
-
-    } catch (error) {
-        
-        res.render('../views/admin/signUpForm.ejs', {
-            error
-        });
-       
-    }
-};
 
 module.exports = {
     
@@ -205,8 +167,5 @@ module.exports = {
     formCreateArticle,
     formEditArticle,
     deleteArticle,
-    logOut,
-    formSignUp,
-    signUp
 
 }

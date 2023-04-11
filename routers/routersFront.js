@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-const { getAllArticles, getOneArticle, searchArticles, formSignIn, signIn }=require('../controllers/frontControllers')
-
+const { getAllArticles, getOneArticle, searchArticles }=require('../controllers/frontControllers')
+const { formSignIn, signIn }=require('../controllers/loginControllers')
 
 router.get('/', getAllArticles );
 
