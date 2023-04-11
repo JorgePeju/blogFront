@@ -3,6 +3,7 @@ const router = express.Router();
 
 const { createArticle, deleteArticle, editArticle, formCreateArticle, formEditArticle, getArticles, getOneArticle}=require('../controllers/apiControllers');
 const { signUp, formSignUp, logOut }=require('../controllers/loginControllers')
+
 const { uploadImage } =require('../middleware/multer')
 
 router.get('/',getArticles );

@@ -1,4 +1,10 @@
-
+/**
+ * 
+ * @param {String} url enlace de la api
+ * @param {String} [method]opcional
+ * @param {Object} [body] opcional 
+ * @returns {Promise <Object>}
+ */
 const consultation = async (url, method, body = {}) => {
 
     let options = {};

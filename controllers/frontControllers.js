@@ -1,6 +1,12 @@
 const { consultation } = require('../helpers/fetch')
 
-
+/**
+ * 
+ * @param {Object} req 
+ * @param {Object} res 
+ * @returns {json}
+ * @throws {error}
+ */
 const getAllArticles = async (req, res) => {
 
     try {
@@ -25,7 +31,13 @@ const getAllArticles = async (req, res) => {
 
 };
 
-
+/**
+ * 
+ * @param {Object} req 
+ * @param {Object} res 
+ * @returns {json}
+ * @throws {error}
+ */
 const getOneArticle = async (req, res) => {
 
     try {
@@ -48,6 +60,13 @@ const getOneArticle = async (req, res) => {
     }
 };
 
+/**
+ * 
+ * @param {Object} req 
+ * @param {Object} res 
+ * @returns {json}
+ * @throws {error}
+ */
 const searchArticles = async (req, res) => {
     
     try {

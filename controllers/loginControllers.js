@@ -8,6 +8,13 @@ const formSignIn = async (req, res) => {
 
 };
 
+/**
+ * 
+ * @param {Object} req 
+ * @param {Object} res 
+ * @returns {Promise <Object>}
+ * @throws {error}
+ */
 const signIn = async (req, res) => {
 
     const { email, password } = req.body
@@ -15,8 +22,11 @@ const signIn = async (req, res) => {
     try {
 
         const userCredentials = await signInWithEmailAndPassword(authFb, email, password);
+       
+        const token = userCredentials._tokenResponse.idToken
+        res.cookie("token", userCredentials._tokenResponse.idToken , { http: true, secure: true, sameSite: 'strict', expires: new Date('2023-12-20') })
         
-        //* res.cookie()
+        console.log(token)
         res.redirect('/admin')
 
     } catch (error) {
@@ -28,9 +38,13 @@ const signIn = async (req, res) => {
     }
 };
 
-
-
-
+/**
+ * 
+ * @param {Object} req 
+ * @param {Object} res 
+ * @returns {Promise <Object>}
+ * @throws {error}
+ */
 const logOut = async (req, res) => {
 
     try {
@@ -51,13 +65,20 @@ const formSignUp = async (req, res) => {
 
 };
 
+/**
+ * 
+ * @param {Object} req 
+ * @param {Object} res
+ * @returns {Promise <Object>}
+ * @throws {error} 
+ */
 const signUp = async (req, res) => {
 
     const { email, password } = req.body
 
     try {
 
-        const userCredential = await createUserWithEmailAndPassword(authFb, email, password)
+        const userCredentials = await createUserWithEmailAndPassword(authFb, email, password)
 
         res.redirect('/admin')
 
