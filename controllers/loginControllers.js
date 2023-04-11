@@ -9,12 +9,15 @@ const formSignIn = async (req, res) => {
 };
 
 /**
- * 
- * @param {Object} req 
- * @param {Object} res 
- * @returns {Promise <Object>}
- * @throws {error}
- */
+* Maneja la autenticación del usuario mediante correo electrónico y contraseña.
+*@async
+*@param {Object} req 
+*@param {Object} res 
+*@param {String} req.body - Correo electrónico del usuario.
+*@param {String} req.body - Contraseña del usuario.
+*@returns {Promise<Object>} - Promesa que resuelve cuando se completa la operación.
+*@throws {Error} - Si ocurre un error al autenticar al usuario.
+*/
 const signIn = async (req, res) => {
 
     const { email, password } = req.body
@@ -39,11 +42,9 @@ const signIn = async (req, res) => {
 };
 
 /**
- * 
- * @param {Object} req 
- * @param {Object} res 
- * @returns {Promise <Object>}
- * @throws {error}
+ * Cierra la sesión actual del usuario y redirige a la página principal.
+ * @param {Object} req
+ * @param {Object} res
  */
 const logOut = async (req, res) => {
 
@@ -66,12 +67,14 @@ const formSignUp = async (req, res) => {
 };
 
 /**
- * 
- * @param {Object} req 
- * @param {Object} res
- * @returns {Promise <Object>}
- * @throws {error} 
- */
+*Registra un usuario y lo redirije a la vista del admin.
+*@param {Object} req 
+*@param {Object} res
+*@param {String} req.body.email - Correo electrónico del usuario.
+*@param {String} req.body.password - Contraseña del usuario.
+*@returns {Promise<Object>}
+*@throws {error}
+*/
 const signUp = async (req, res) => {
 
     const { email, password } = req.body

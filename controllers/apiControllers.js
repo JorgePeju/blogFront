@@ -2,11 +2,13 @@
 const {consultation} = require('../helpers/fetch')
 
 /**
- * 
- * @param {Object} req 
- * @param {Object} res 
- * @returns {json} article
- * @throws {error}
+ * Obtiene los artículos de la API y los muestra en la vista del administrador.
+ * @async
+ * @function
+ * @param {Object} req - 
+ * @param {Object} res - 
+ * @returns {json} Objeto con los datos del artículo.
+ * @throws {error} Error al obtener los artículos.
  */
 const getArticles = async (req, res) => {
     
@@ -33,11 +35,13 @@ const getArticles = async (req, res) => {
 };
 
 /**
- *  
- * @param {Object} req 
- * @param {Object} res 
- * @returns {json} article
- * @throws {error}
+ * Obtiene un artículo de la API y los muestra en la vista detalle del administrador.
+ * @async
+ * @function
+ * @param {Object} req - 
+ * @param {Object} res - 
+ * @returns {json} Objeto con los datos del artículo.
+ * @throws {error} Error al obtener los artículos.
  */
 const getOneArticle = async (req, res) => {
 
@@ -68,11 +72,11 @@ const formCreateArticle = async (req, res) => {
 };
 
 /**
- * 
- * @param {Object} req 
- * @param {Object} res 
- * @returns {json}
- * @throws {error}
+ * Crea un nuevo artículo.
+ * @param {Object} req
+ * @param {Object} res
+ * @throws {Error} Si hay algún error al crear el artículo.
+ * @returns {json} Una respuesta JSON que indica si la operación fue exitosa.
  */
 const createArticle = async (req, res) => {
 
@@ -105,6 +109,13 @@ const createArticle = async (req, res) => {
     }
 };
 
+/**
+Renderiza la vista de edición de un artículo.
+*@param {Object} req 
+*@param {Object} res 
+*@returns Envía como respuesta la renderización de la vista.
+*@throws {Error} Si ocurre algún error al obtener el artículo.
+*/
 const formEditArticle  = async (req, res) => {
 
     const id = req.params.id
@@ -115,16 +126,15 @@ const formEditArticle  = async (req, res) => {
     res.render('../views/admin/adminEdit.ejs', {
         article: respuesta.data
     });
-  
-        
+
 };
 
 /**
- * 
- * @param {Object} req 
- * @param {Object} res 
- * @returns {json}
- * @throws {error}
+ * Edita un nuevo artículo.
+ * @param {Object} req
+ * @param {Object} res
+ * @throws {Error} Si hay algún error al crear el artículo.
+ * @returns {json} Una respuesta JSON que indica si la operación fue exitosa.
  */
 const editArticle = async (req, res) => {
 
@@ -164,8 +174,8 @@ const editArticle = async (req, res) => {
  * 
  * @param {Object} req 
  * @param {Object} res 
- * @returns {json}
- * @throws {error}
+ * @returns {json} Una respuesta JSON que indica si la operación fue exitosa.
+ * @throws {Error} Si ocurre algún error al borrar el artículo.
  */
 const deleteArticle = async (req, res) => {
 
@@ -186,7 +196,6 @@ const deleteArticle = async (req, res) => {
         });
 
     };
-
 };
 
 

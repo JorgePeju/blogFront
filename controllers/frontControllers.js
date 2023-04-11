@@ -1,11 +1,11 @@
 const { consultation } = require('../helpers/fetch')
 
 /**
- * 
+ * Obtiene todos los artículos de la API y los muestra en la vista del admin.
  * @param {Object} req 
  * @param {Object} res 
- * @returns {json}
- * @throws {error}
+ * @returns {json} - Una respuesta JSON con los datos de los artículos obtenidos.
+ * @throws {error} - Si hay un error al acceder a los artículos.
  */
 const getAllArticles = async (req, res) => {
 
@@ -32,11 +32,11 @@ const getAllArticles = async (req, res) => {
 };
 
 /**
- * 
+ * Obtiene un artículo de la API y los muestra en la vista detalle del admin.
  * @param {Object} req 
  * @param {Object} res 
- * @returns {json}
- * @throws {error}
+ * @returns {json} - Una respuesta JSON con los datos de los artículos obtenidos.
+ * @throws {error} - Si hay un error al acceder a los artículos.
  */
 const getOneArticle = async (req, res) => {
 
@@ -61,10 +61,10 @@ const getOneArticle = async (req, res) => {
 };
 
 /**
- * 
+ * Busca artículos en el enviados formulario "search" para que la API los devuelva.
  * @param {Object} req 
  * @param {Object} res 
- * @returns {json}
+ * @returns {json} Una respuesta JSON con los datos de los artículos obtenidos.
  * @throws {error}
  */
 const searchArticles = async (req, res) => {
