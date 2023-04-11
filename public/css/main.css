@@ -38,11 +38,11 @@
 }
 
 .navbar.admin a:hover {
-    color: #2980b9;
+    color: #000000;
 }
 
 .navbar.user a:hover {
-    color: #2b255a;
+    color: #ffffff;
 }
 
 .admin {
@@ -220,8 +220,43 @@
     margin: 5px;
 }
 
+#table-container{
+	margin: 5%;
+}
 
+table{
+	background-color: white;
+	text-align: left;
+	border-collapse: collapse;
+	width: 100%;
+}
 
+th, td{
+	padding: 20px;
+}
+
+.table-head{
+	background-color: #135c8d;
+	border-bottom: solid 5px #000000;
+	color: white;
+    text-align: center;
+}
+
+tr:nth-child(even){
+	background-color: #ddd;
+}
+
+tr:hover td{
+	background-color: #59bdeb;
+	color: white;
+}
+
+.tbody img {
+    max-width: 80%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
 
 /* Estilos para pantallas mayores a 768px */
 @media screen and (min-width: 768px) {}

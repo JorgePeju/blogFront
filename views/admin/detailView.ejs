@@ -1,0 +1,33 @@
+<%- include('./templates/header.ejs') %>
+<%- include('./templates/nav.ejs') %>
+
+<main class="grid-container">
+
+ <div class="card">
+
+    <div class="imagen">
+        <img src="<%= article.imagen %>">
+      </div>
+
+         <h2 class="titulo">
+             <%= article.titulo %>
+         </h2>
+
+         <p class="extracto">
+             <%= article.extracto %>
+         </p>
+
+         <p class="cuerpo">
+             <%= article.cuerpo %>
+         </p> 
+
+         <div class="botones">
+            <button class="admin"><a href="/admin/edit-form/<%=article._id%>">Editar</a></button>
+            <button class="admin"><a href="/admin/remove-article/<%=article._id%>">Eliminar</a></button>
+        </div>
+
+ </div>
+        
+</main>
+
+<%- include('./templates/footer.ejs') %>

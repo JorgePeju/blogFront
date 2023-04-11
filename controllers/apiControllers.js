@@ -26,6 +26,28 @@ const getArticles = async (req, res) => {
 
 };
 
+const getOneArticle = async (req, res) => {
+
+    try {
+
+        const id = req.params.id
+        const url = `${process.env.URL_BASE}${id}`;
+        const respuesta = await consultation(url)
+     
+        res.render('../views/admin/detailView.ejs', {
+            article: respuesta.data
+          });
+
+    } catch (error) {
+
+        return res.status(500).json({
+            ok: false,
+            msg: "Error al acceder al artículo",
+        });
+
+    }
+};
+
 const formCreateArticle = async (req, res) => {
 
     res.render('../views/admin/adminCreate.ejs');
@@ -177,6 +199,7 @@ const signUp = async (req, res) => {
 module.exports = {
     
     getArticles,
+    getOneArticle,
     createArticle,
     editArticle,
     formCreateArticle,
