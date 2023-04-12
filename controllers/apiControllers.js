@@ -18,6 +18,7 @@ const getArticles = async (req, res) => {
         const limit = 5;
         const url = `${process.env.URL_BASE}?page=${page > 0 ? page : 1}&limit=${limit}`;
         const respuesta = await consultation(url);
+        console.log(respuesta)
    
         res.render('../views/admin/adminView.ejs', {
           article: respuesta.data

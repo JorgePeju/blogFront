@@ -7,28 +7,66 @@ const {checkToken}=require('../middleware/validarToken')
 
 const { uploadImage } =require('../middleware/multer')
 
-router.get('/',checkToken, getArticles );
+router.get('/',[
 
-router.get('/detail-view/:id',checkToken, getOneArticle );
+  checkToken
+], 
+getArticles );
 
-router.post('/create-article', checkToken, [
+router.get('/detail-view/:id',[
+
+  checkToken
+], 
+getOneArticle );
+
+router.post('/create-article',[
+
+  checkToken, 
   uploadImage
 ], createArticle );
 
-router.get('/create-form',checkToken, formCreateArticle);
+router.get('/create-form',[
 
-router.post('/edit-article/:id', checkToken, [
+  checkToken
+], 
+formCreateArticle);
+
+router.post('/edit-article/:id', [
+
+  checkToken, 
   uploadImage
-], editArticle);
+], 
+editArticle);
 
-router.get('/edit-form/:id',checkToken, formEditArticle);
+router.get('/edit-form/:id',[
 
-router.get('/remove-article/:id', checkToken, deleteArticle);
+  checkToken
+], 
+formEditArticle);
 
-router.get('/signup-form', checkToken, formSignUp );
-router.post('/signup',checkToken, signUp )
+router.get('/remove-article/:id', [
 
-router.get('/logout', checkToken, logOut );
+  checkToken
+], 
+deleteArticle);
+
+router.get('/signup-form', [
+
+  checkToken
+], 
+formSignUp );
+
+router.post('/signup',[
+  
+  checkToken
+], 
+signUp )
+
+router.get('/logout', [
+
+  checkToken
+], 
+logOut );
 
 
 

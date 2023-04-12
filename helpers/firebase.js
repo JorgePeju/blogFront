@@ -1,6 +1,6 @@
 const { initializeApp } = require('firebase/app')
 const { getAuth } = require('firebase/auth');
-const { firebaseConfig } = require('../config/firebaseConfig')
+const { firebaseConfig , serviceAccount } = require('../config/firebaseConfig')
 const  admin = require("firebase-admin");
 /**
  * Instancia de Firebase.
@@ -16,7 +16,7 @@ const authFb = getAuth(firebaseApp)
 /**
  * @type {json}
  */
-let serviceAccount = require("../config/proyecto-blog-9520e-firebase-adminsdk-qkiva-32dee3d7c1.json");
+
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
