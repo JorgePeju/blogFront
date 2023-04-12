@@ -13,7 +13,10 @@ const firebaseApp = initializeApp(firebaseConfig);
  */
 const authFb = getAuth(firebaseApp)
 
-var serviceAccount = require("./proyecto-blog-9520e-firebase-adminsdk-qkiva-32dee3d7c1.json");
+/**
+ * @type {json}
+ */
+let serviceAccount = require("../config/proyecto-blog-9520e-firebase-adminsdk-qkiva-32dee3d7c1.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
