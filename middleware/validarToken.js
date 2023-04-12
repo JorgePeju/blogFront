@@ -26,4 +26,25 @@ const checkToken = async (req, res, next) => {
     }
 };
 
-module.exports = { checkToken };
+const renewToken = async (req, res) => {
+
+    const idToken = req.body.token;
+  
+    try {
+
+      const renewedToken = await admin.auth().verifyIdToken(idToken, true);
+      res.json({ token: renewedToken });
+
+    } catch (error) {
+
+      console.log(error);
+
+      res.redirect('./', { error: "Token inválido" });
+
+    }
+  };
+
+module.exports = { 
+    checkToken,
+    renewToken
+ };
