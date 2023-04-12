@@ -8,11 +8,9 @@ pass: pepe1234
 
 ## Las variables de entorno del proyecto son:
 
-PORT = 3000
+PORT =
 
-URI_CONNECT = mongodb+srv://admin:admin@peju.fbbyggi.mongodb.net/blog?retryWrites=true&w=majority
-
-URL_BASE = http://localhost:3001/api/v1/
+URL_BASE =
 
 ## Para inciar e instalar todas las dependencias es necesario poner el siguiente comando en la terminal:
 
