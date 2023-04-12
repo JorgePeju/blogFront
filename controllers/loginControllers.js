@@ -83,23 +83,30 @@ const formSignUp = async (req, res) => {
 *@throws {error}
 */
 const signUp = async (req, res) => {
-
-    const { email, password } = req.body
+    const { email, password } = req.body;
 
     try {
+    
+        const userCredentials = await createUserWithEmailAndPassword(authFb, email, password);
 
-        const userCredentials = await createUserWithEmailAndPassword(authFb, email, password)
+        const token = userCredentials._tokenResponse.idToken;
+        res.cookie("token", token, {
+            httpOnly: true,
+            secure: true,
+            sameSite: 'strict',
+            expires: new Date('2023-12-20'),
+        });
 
-        res.redirect('/admin')
+        res.redirect('/admin');
 
     } catch (error) {
-        
+       
         res.render('../views/admin/signUpForm.ejs', {
             error
         });
-       
     }
 };
+
 
 
 module.exports= {
