@@ -189,7 +189,12 @@
     color: var(--dark-blue);
     margin: 30px;
 }
-
+.create-form img {
+    max-width: 60%;
+    text-align: center;
+    object-fit: cover;
+    
+}
 #searchForm {
     margin: auto;
 }

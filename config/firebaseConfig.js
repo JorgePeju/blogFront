@@ -1,6 +1,6 @@
 
 const firebaseConfig = {
-    apiKey: "process.env.API_KEY_FIREBASE",
+    apiKey: "AIzaSyDp8hIVwDGpovnTMu1Ag5wuMFoeqqvjyxQ",
     authDomain: "proyecto-blog-9520e.firebaseapp.com",
     projectId: "proyecto-blog-9520e",
     storageBucket: "proyecto-blog-9520e.appspot.com",

@@ -36,7 +36,6 @@ const signIn = async (req, res) => {
 
           });
         
-        console.log(token)
         res.redirect('/admin')
 
     } catch (error) {
