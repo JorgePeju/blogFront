@@ -8,11 +8,21 @@ pass: pepe1234
 
 ## Las variables de entorno del proyecto son:
 
-PORT = 3000
 
-URI_CONNECT = mongodb+srv://admin:admin@peju.fbbyggi.mongodb.net/blog?retryWrites=true&w=majority
+PORT =
+- Enlace para conectarse a la API
+URL_BASE = 
 
-URL_BASE = http://localhost:3001/api/v1/
+- Configuración de Firebase
+API_KEY_FIREBASE =
+APPID = 
+
+- Configuración del admin de Firebase
+PROJECT_ID = 
+FIREBASE_PRIVATE_KEY_ID = 
+FIREBASE_PRIVATE_KEY = 
+CLIENT_EMAIL = 
+CLIENT_ID = 
 
 ## Para inciar e instalar todas las dependencias es necesario poner el siguiente comando en la terminal:
 
