@@ -8,7 +8,6 @@ pass: pepe1234
 
 ## Las variables de entorno del proyecto son:
 
-
 PORT =
 - Enlace para conectarse a la API
 URL_BASE = 
