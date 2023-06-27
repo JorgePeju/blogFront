@@ -1,29 +1,72 @@
 const express = require('express');
 const router = express.Router();
 
-const { createArticle, deleteArticle, editArticle, formCreateArticle, formEditArticle, getArticles, signUp, formSignUp, logOut }=require('../controllers/apiControllers');
+const { createArticle, deleteArticle, editArticle, formCreateArticle, formEditArticle, getArticles, getOneArticle}=require('../controllers/apiControllers');
+const { signUp, formSignUp, logOut }=require('../controllers/loginControllers')
+const {checkToken}=require('../middleware/validarToken')
+
 const { uploadImage } =require('../middleware/multer')
 
-router.get('/',getArticles );
+router.get('/',[
 
-router.post('/create-article', [
+  checkToken
+], 
+getArticles );
+
+router.get('/detail-view/:id',[
+
+  checkToken
+], 
+getOneArticle );
+
+router.post('/create-article',[
+
+  checkToken, 
   uploadImage
 ], createArticle );
 
-router.get('/create-form', formCreateArticle);
+router.get('/create-form',[
+
+  checkToken
+], 
+formCreateArticle);
 
 router.post('/edit-article/:id', [
+
+  checkToken, 
   uploadImage
-], editArticle);
+], 
+editArticle);
 
-router.get('/edit-form/:id', formEditArticle);
+router.get('/edit-form/:id',[
 
-router.get('/remove-article/:id', deleteArticle);
+  checkToken
+], 
+formEditArticle);
 
-router.get('/signup-form', formSignUp );
-router.post('/signup', signUp )
+router.get('/remove-article/:id', [
 
-router.get('/logout', logOut );
+  checkToken
+], 
+deleteArticle);
+
+router.get('/signup-form', [
+
+  checkToken
+], 
+formSignUp );
+
+router.post('/signup',[
+  
+  checkToken
+], 
+signUp )
+
+router.get('/logout', [
+
+  checkToken
+], 
+logOut );
 
 
 

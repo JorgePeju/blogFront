@@ -1,0 +1,37 @@
+<% if (article.hasPrevPage || article.hasNextPage) { %>
+
+    <div class="paginacion">
+
+        <% if (article.hasPrevPage) { %>
+
+          <div id="anterior" class="botones"><button class="admin"><a href="?page=<%= article.prevPage %>">Anterior</a></button></div>
+
+        <% } %>
+      
+        <% const minimoPagina = Math.min(article.totalPages, 3); %>
+        <% const paginaActual = Math.max(1, article.page - 1); %>
+        <% const maximoPagina = Math.min(paginaActual + minimoPagina - 1, article.totalPages); %>
+
+        <% for (let i = paginaActual; i <= maximoPagina; i++) { %>
+
+          <% if (i === article.page) { %>
+
+            <div id="pagina-totales" class="botones"><button class="admin"><span><%= i %></span></button></div> 
+
+          <% } else { %>
+
+            <div id="pagina-totales" class="botones"><button class="admin"><a href="?page=<%= i %>"><%= i %></a></button></div> 
+
+          <% } %>
+
+        <% } %>
+      
+        <% if (article.hasNextPage) { %>
+
+          <div id="siguiente" class="botones"><button class="admin"><a href="?page=<%= article.nextPage %>">Siguiente</a></button></div>
+
+        <% } %>
+        
+      </div>
+
+<% } %>

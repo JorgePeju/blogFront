@@ -1,86 +1,90 @@
 <%- include('./templates/header.ejs') %>
 <%- include('./templates/nav.ejs') %>
 
-    <main class="grid-container">
+        <main>
 
-        <% if(article.docs.length > 0) {%>
-    
-            <% article.docs.forEach(element=> {%>
-    
-                <div class="card"> 
+            <div id="table-container">
 
-                    <div class="imagen">
-                      <img src="<%= element.imagen %>">
-                    </div>
+                <table>
 
-                    <h2 class="titulo">
-                        <%= element.titulo %>
-                    </h2>
-    
-                    <p class="extracto">
-                        <%= element.extracto %>
-                    </p>
-    
-                    <p class="cuerpo">
-                        <%= element.cuerpo %>
-                    </p>
-    
-                    <div class="botones">
+                    <tr class="table-head">
+                        <th>Imagen</th>
+                        <th>Título</th>
+                        <th>Extracto</th>
+                        <th>Fecha</th>
+                        <th>Vista Detalle</th>
+                        <th>Editar</th>
+                        <th>Borrar</th>
+                    </tr>
 
-                        <button class="admin"><a href="/admin/edit-form/<%=element._id%>">Editar</a></button>
+                    <tbody class="tbody">
 
-                        <button class="admin"><a href="/admin/remove-article/<%=element._id%>">Eliminar</a></button>
+                        <% if(article.docs.length> 0) { %>
 
-                    </div>
-    
-                </div>
-            
-            <% }); %>
-    
-            <% if (article.hasPrevPage || article.hasNextPage) { %>
-    
-                <div class="paginacion">
+                            <% article.docs.forEach(element=> { %>
 
-                    <% if (article.hasPrevPage) { %>
+                                <tr>
 
-                      <div id="anterior" class="botones"><button class="admin"><a href="?page=<%= article.prevPage %>">Anterior</a></button></div>
+                                    <td>
+                                        <img src="<%= element.imagen %>">
+                                    </td>
 
-                    <% } %>
-                  
-                    <% const minimoPagina = Math.min(article.totalPages, 3); %>
-                    <% const paginaActual = Math.max(1, article.page - 1); %>
-                    <% const maximoPagina = Math.min(paginaActual + minimoPagina - 1, article.totalPages); %>
+                                    <td>
+                                        <%= element.titulo %>
+                                    </td>
 
-                    <% for (let i = paginaActual; i <= maximoPagina; i++) { %>
+                                    <td>
+                                        <%= element.extracto %>
+                                    </td>
 
-                      <% if (i === article.page) { %>
+                                    <td>
+                                        <%= element.fecha.toString().substring(0, 10) %>
+                                    </td>
 
-                        <div id="pagina-totales" class="botones"><button class="admin"><span><%= i %></span></button></div> 
+                                    <td>
+                                      <div class="botones">
+                                        <button class="admin">
+                                            <a href="/admin/detail-view/<%= element._id %>">Vista Detalle</a>
+                                        </button>
+                                      </div>
+                                    </td>
 
-                      <% } else { %>
+                                    <td>
+                                      <div class="botones">
+                                        <button class="admin">
+                                            <a href="/admin/edit-form/<%= element._id %>">Editar</a>
+                                        </button>
+                                      </div>
+                                    </td>
 
-                        <div id="pagina-totales" class="botones"><button class="admin"><a href="?page=<%= i %>"><%= i %></a></button></div> 
+                                    <td>
+                                      <div class="botones">
+                                        <button class="admin">
+                                            <a href="/admin/remove-article/<%= element._id %>">Eliminar</a>
+                                        </button>
+                                      </div>
+                                    </td>
 
-                      <% } %>
+                                </tr>
 
-                    <% } %>
-                  
-                    <% if (article.hasNextPage) { %>
+                                <% }); %>
 
-                      <div id="siguiente" class="botones"><button class="admin"><a href="?page=<%= article.nextPage %>">Siguiente</a></button></div>
+                                    <% } else { %>
+                                        <tr>
+                                            <td colspan="7">
+                                                <p>No hay ningún artículo</p>
+                                            </td>
+                                        </tr>
+                                        <% } %>
 
-                    <% } %>
-                    
-                  </div>
-    
-            <% } %>
-    
-        <% } else { %>
-    
-            <p>No hay ningún artículo</p>
-    
-        <% } %>
-    
-    </main>
+                    </tbody>
+
+                </table>
+
+            </div>
+
+<%- include('./templates/pagination.ejs') %>
+
+        </main>
 
 <%- include('./templates/footer.ejs') %>

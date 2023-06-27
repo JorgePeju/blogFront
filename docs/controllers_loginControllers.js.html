@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: controllers/loginControllers.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: controllers/loginControllers.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const { createUserWithEmailAndPassword, signOut , signInWithEmailAndPassword} = require('firebase/auth');
+const { authFb } = require('../helpers/firebase')
+
+
+const formSignIn = async (req, res) => {
+
+    res.render('../views/signInForm.ejs');
+
+};
+
+/**
+* Maneja la autenticación del usuario mediante correo electrónico y contraseña.
+*@async
+*@param {Object} req 
+*@param {Object} res 
+*@param {String} req.body - Correo electrónico del usuario.
+*@param {String} req.body - Contraseña del usuario.
+*@returns {Promise&lt;Object>} - Promesa que resuelve cuando se completa la operación.
+*@throws {Error} - Si ocurre un error al autenticar al usuario.
+*/
+const signIn = async (req, res) => {
+
+    const { email, password } = req.body
+
+    try {
+
+        const userCredentials = await signInWithEmailAndPassword(authFb, email, password);
+       
+        const token = userCredentials._tokenResponse.idToken
+        res.cookie("token", userCredentials._tokenResponse.idToken, {
+
+            httpOnly: true,
+            secure: true,
+            sameSite: 'strict',
+            expires: new Date('2023-12-20'),
+
+          });
+        
+        console.log(token)
+        res.redirect('/admin')
+
+    } catch (error) {
+
+        res.render('../views/signInForm.ejs', {
+            error
+        });
+
+    }
+};
+
+/**
+ * Cierra la sesión actual del usuario y redirige a la página principal.
+ * @param {Object} req
+ * @param {Object} res
+ */
+const logOut = async (req, res) => {
+
+    try {
+
+        await signOut(authFb)
+        res.clearCookie("token")
+        res.redirect('/')
+
+    } catch (error) {
+
+        console.log(error)
+    }
+};
+
+const formSignUp = async (req, res) => {
+
+    res.render('../views/admin/signUpForm.ejs');
+
+};
+
+/**
+*Registra un usuario y lo redirije a la vista del admin.
+*@param {Object} req 
+*@param {Object} res
+*@param {String} req.body.email - Correo electrónico del usuario.
+*@param {String} req.body.password - Contraseña del usuario.
+*@returns {Promise&lt;Object>}
+*@throws {error}
+*/
+const signUp = async (req, res) => {
+
+    const { email, password } = req.body
+
+    try {
+
+        const userCredentials = await createUserWithEmailAndPassword(authFb, email, password)
+
+        res.redirect('/admin')
+
+    } catch (error) {
+        
+        res.render('../views/admin/signUpForm.ejs', {
+            error
+        });
+       
+    }
+};
+
+
+module.exports= {
+    
+    formSignIn,
+    signIn,
+    logOut,
+    formSignUp,
+    signUp
+
+};
+
+
+// const signUp = async (req, res) => {
+//     const { email, password } = req.body;
+
+//     try {
+    
+//         const userCredentials = await createUserWithEmailAndPassword(authFb, email, password);
+
+//         const token = userCredentials._tokenResponse.idToken;
+        
+//         res.cookie("token", token, {
+//             httpOnly: true,
+//             secure: true,
+//             sameSite: 'strict',
+//             expires: new Date('2023-12-20'),
+//         });
+
+//         res.redirect('/admin');
+
+//     } catch (error) {
+       
+//         res.render('../views/admin/signUpForm.ejs', {
+//             error
+//         });
+//     }
+// };</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#authFb">authFb</a></li><li><a href="global.html#consultation">consultation</a></li><li><a href="global.html#createArticle">createArticle</a></li><li><a href="global.html#deleteArticle">deleteArticle</a></li><li><a href="global.html#editArticle">editArticle</a></li><li><a href="global.html#firebaseApp">firebaseApp</a></li><li><a href="global.html#formEditArticle">formEditArticle</a></li><li><a href="global.html#getAllArticles">getAllArticles</a></li><li><a href="global.html#getArticles">getArticles</a></li><li><a href="global.html#getOneArticle">getOneArticle</a></li><li><a href="global.html#logOut">logOut</a></li><li><a href="global.html#searchArticles">searchArticles</a></li><li><a href="global.html#signIn">signIn</a></li><li><a href="global.html#signUp">signUp</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Wed Apr 12 2023 09:02:58 GMT+0200 (hora de verano de Europa central)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

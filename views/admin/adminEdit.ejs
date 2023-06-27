@@ -5,8 +5,6 @@
 
             <form action="/admin/edit-article/<%=article._id%>" method="POST" enctype="multipart/form-data">
 
-
-
                 <label class="buscar">Título:</label>
                 <input id="titulo" name="titulo" type="text" placeholder="Título del artículo" value="<%=article.titulo%>">
 
@@ -20,6 +18,7 @@
                 <input id="foto" name="foto" type="file">
 
                 <input id="imagen" name="imagen" type="hidden" value="<%=article.imagen%>">
+                <div class="imagen"><img src="<%=article.imagen%>" alt="<%=article.titulo%>"></div>
 
                 <input type="submit" value="Editar artículo">
 

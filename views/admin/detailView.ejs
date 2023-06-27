@@ -1,14 +1,6 @@
 <%- include('./templates/header.ejs') %>
 <%- include('./templates/nav.ejs') %>
 
-<form id="searchForm" action="/search" method="GET" >
-
-    <label class="buscar">Buscador</label> 
-    <input id="searchInput" name="search" type="search">
-    <div class="botones"><button type="submit" class="user">Buscar</button></div>
-
-</form>
-
 <main class="grid-container">
 
  <div class="card">
@@ -29,6 +21,11 @@
              <%= article.cuerpo %>
          </p> 
          <%= console.log(article.cuerpo) %>
+         <div class="botones">
+            <button class="admin"><a href="/admin/edit-form/<%=article._id%>">Editar</a></button>
+            <button class="admin"><a href="/admin/remove-article/<%=article._id%>">Eliminar</a></button>
+        </div>
+
  </div>
         
 </main>
